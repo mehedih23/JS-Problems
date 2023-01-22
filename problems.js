@@ -184,3 +184,32 @@ console.log(pandaCostResult);
 
 আর যদি ২০০ এর বেশি যায় তাহলে প্রথম ১০০ জন এর প্রতি জন এর জন্য ৫০০০ টাকা করে দিতে হবে। আর ১০০ এর বেশি যতজন আছে তাদের প্রত্যেকের জন্য ৪০০০ টাকা করে দিতে হবে। এর ২০০ এর বেশি (অর্থাৎ ২০১ নম্বর থেকে) যতজন আছে তাদের প্রত্যেক এর জন্য ৩০০০ টাকা করে দিতে হবে।
 */
+
+function picnicBudget(members) {
+    const first_100_members = 100;
+    const second_200_members = 200;
+
+    if (members > 1 && members <= 100) {
+        const member_cost = members * 5000;
+        return member_cost;
+    } else if (members > 100 && members <= 200) {
+        const rest_members = members - first_100_members;
+        const first_100_members_cost = first_100_members * 5000;
+        const second_100_members_cost = rest_members * 4000;
+        const total_cost = first_100_members_cost + second_100_members_cost;
+        return total_cost;
+    } else if (members > 200) {
+        const rest_members = members - second_200_members;
+        const rest_members_cost = rest_members * 3000;
+        const rest_second_members = second_200_members - first_100_members;
+        const rest_second_members_cost = rest_second_members * 4000;
+        const rest_first_members_cost = first_100_members * 5000;
+        const total = rest_first_members_cost + rest_second_members_cost + rest_members_cost;
+        return total;
+    } else {
+        console.log('Please input in the right way.');
+    }
+}
+
+const picnicBudgetResult = picnicBudget(235);
+// console.log(picnicBudgetResult);
